@@ -1,0 +1,70 @@
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+      <LinearLayout
+
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="225dp">
+              <ImageView
+                  android:id="@+id/formulario_foto"
+                  android:layout_width="match_parent"
+                  android:layout_height="200dp"
+                  android:background="@drawable/person"/>
+              <Button
+                  android:id="@+id/botao_foto"
+                  android:layout_width="56dp"
+                  android:layout_height="56dp"
+                  android:background="@drawable/camera"
+                  android:layout_alignParentBottom="true"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="16dp"/>
+          </RelativeLayout>
+          <EditText
+              android:id="@+id/formulario_nome"
+              android:hint="Nome:"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+          <EditText
+              android:id="@+id/formulario_endereco"
+              android:hint="Endereço:"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+          <EditText
+              android:id="@+id/formulario_telefone"
+              android:hint="Telefone:"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          <EditText
+              android:id="@+id/formulario_site"
+              android:hint="Site:"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+          <RatingBar
+              android:id="@+id/formulario_estrelas"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:numStars="5"
+              android:max="10"
+              android:layout_gravity="center"/>
+
+
+      </LinearLayout>
+
+
+
+</ScrollView>
