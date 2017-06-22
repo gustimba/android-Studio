@@ -1,6 +1,8 @@
 package com.example.gustimba.trabalho.modelo;
 
 
+import android.widget.ImageView;
+
 import java.io.Serializable;
 
 public class Aluno implements Serializable {//para converter em  binario, consequindo  assim passar para outra activity.
@@ -10,6 +12,7 @@ public class Aluno implements Serializable {//para converter em  binario, conseq
     private  String telefone;
     private  String site;
     private  Double nota;
+    private  String caminhFoto;
 
     public Long getId() {
         return id;
@@ -58,6 +61,10 @@ public class Aluno implements Serializable {//para converter em  binario, conseq
     public void setNota(Double nota) {
         this.nota = nota;
     }
+
+    public String getCaminhoFoto(){return caminhFoto;}
+
+    public void setCaminhoFoto(String caminhFoto){this.caminhFoto = caminhFoto;}
 
     @Override
     public  String toString(){

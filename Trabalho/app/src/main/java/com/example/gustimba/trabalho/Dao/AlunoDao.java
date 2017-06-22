@@ -18,20 +18,30 @@ import java.util.List;
 
 public class AlunoDao extends SQLiteOpenHelper{
     public AlunoDao(Context context) {
-        super(context, "Agenda", null, 1);
+        super(context, "Agenda", null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Alunos(id INTEGER PRIMARY KEY, nome  TEXT NOT NULL,endereco TEXT, telefone TEXT, site TEXT, nota REAL)";
+        String sql = "CREATE TABLE Alunos(id INTEGER PRIMARY KEY, " +
+                                          "nome  TEXT NOT NULL,"+
+                                          "endereco TEXT,"+
+                                          "telefone TEXT, "+
+                                          "site TEXT,"+
+                                          "nota REAL,"+
+                                          "caminhoFoto TEXT)";
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql="DROP TABLE IF EXISTS Alunos";
-        db.execSQL(sql);
-        onCreate(db);
+        String sql= "";
+        switch (oldVersion){
+            case 1:
+                sql="ALTER TABLE Alunos ADD COLUMN caminhoFoto TEXT";
+                db.execSQL(sql);//indo para versao 2
+                break;
+        }
     }
 
     public  void onSelecao(SQLiteDatabase db){
@@ -53,7 +63,7 @@ public class AlunoDao extends SQLiteOpenHelper{
             aluno.setTelefone(c.getString(c.getColumnIndex("telefone")));
             aluno.setSite(c.getString(c.getColumnIndex("site")));
             aluno.setNota(c.getDouble(c.getColumnIndex("nota")));
-
+            aluno.setCaminhoFoto(c.getString(c.getColumnIndex("caminhoFoto")));
             alunos.add(aluno);
         }
         c.close(); // liberando memoria
@@ -76,6 +86,7 @@ public class AlunoDao extends SQLiteOpenHelper{
         dados.put("Telefone",aluno.getTelefone());
         dados.put("Site",aluno.getSite());
         dados.put("Nota",aluno.getNota());
+        dados.put("caminhoFoto",aluno.getCaminhoFoto());
         return dados;
     }
 
@@ -90,5 +101,12 @@ public class AlunoDao extends SQLiteOpenHelper{
         ContentValues dados = pegaDadosDoAluno(aluno);
         String[] parametros = {aluno.getId().toString()};
         bd.update("Alunos" , dados,"id = ? ",parametros );
+    }
+    public  boolean ehAluno(String telefone){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor c = db.rawQuery("Select * from Alunos where telefone = ?", new String[]{telefone});
+        int resultado = c.getCount();
+        c.close(); // temos que fechar o cursor
+        return  resultado > 0;
     }
 }

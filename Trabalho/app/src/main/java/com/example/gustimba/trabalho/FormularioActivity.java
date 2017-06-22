@@ -79,7 +79,9 @@ public class FormularioActivity extends AppCompatActivity {
                 foto.setScaleType(ImageView.ScaleType.FIT_XY);
                 //Com o FIT_XY, estamos especificando que a imagem deve se
                 // encaixar no espaço, ajustada tanto na largura como na altura disponível no ImageView.
+                foto.setTag(caminhofoto);
             }
+
         }
     }
 

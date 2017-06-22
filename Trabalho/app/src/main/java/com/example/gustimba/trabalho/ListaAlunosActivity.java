@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.Manifest.permission;
 import com.example.gustimba.trabalho.Dao.AlunoDao;
+import com.example.gustimba.trabalho.adapter.AlunoAdapter;
+import com.example.gustimba.trabalho.converter.AlunoConvert;
 import com.example.gustimba.trabalho.modelo.Aluno;
 
 import java.util.List;
@@ -62,15 +64,34 @@ public class ListaAlunosActivity extends AppCompatActivity {
         List<Aluno> alunos = dao.buscaAlunos();
         dao.close();
 
-        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
+        AlunoAdapter adapter = new AlunoAdapter(this,alunos);
         ListaAlunos.setAdapter(adapter);
     }
+
+
 
     @Override
     protected void onResume() {
 
         super.onResume();
         carregaLista();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+            getMenuInflater().inflate(R.menu.menu_listaalunos, menu);
+            return true;
+        }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_enviar_notas:
+               new EnviarAlunosTask(this).execute();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override    // usamos no final context para pode reutilizar esse codico para outras funçoes
