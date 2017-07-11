@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -7,41 +7,47 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.gustimba.calcular.MainActivity"
-    >
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical">
+    tools:context="com.example.gustimba.calcular.MainActivity">
+     i
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:src="@drawable/ceva"
+            android:id="@+id/imageView" />
 
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/num1"
-          android:hint="Valor da Cerveja"/>
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/num2"
-          android:hint="Valor Por ML"/>
-      <Button
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/salva"
-          android:text="calcular"
-          android:onClick="calculando"
-          android:textColor="@color/cortextbutton"
-          />
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Preço em ML"/>
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/resultado"/>
-  </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:id="@+id/valordaceva"
+            android:hint="Valor da Cerveja"
+            android:layout_marginTop="33dp"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:id="@+id/valorml"
+            android:hint=" ML" />
 
-</RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/salva"
+            android:text="calcular"
+            android:onClick="calculando"
+            android:layout_alignTop="@+id/resultado" />
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/resultado"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+</LinearLayout>

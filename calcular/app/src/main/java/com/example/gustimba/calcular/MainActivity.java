@@ -9,8 +9,8 @@ import android.widget.EditText;
 import static android.R.attr.onClick;
 
 public class MainActivity extends AppCompatActivity {
-    EditText numero;
-    EditText numerodois;
+    EditText valorceva;
+    EditText valorml;
     EditText result;
 
     @Override
@@ -18,20 +18,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        numero = (EditText) findViewById(R.id.num1);
-        numerodois = (EditText) findViewById(R.id.num2);
+        valorceva = (EditText) findViewById(R.id.valordaceva);
+        valorml = (EditText) findViewById(R.id.valorml);
         result = (EditText) findViewById(R.id.resultado);
 
     }
     public void calculando(View v) {
-        Double n1, n2,resultado, resultado2;
-        String  nome="R";
-         n1 = Double.parseDouble(numero.getText().toString());
-        n2 = Double.parseDouble(numerodois.getText().toString());
-        resultado = n1 * 1000;
-        resultado2 = resultado/n2;
+        Double ceva, ml ,resultado , resultado2;
+        String  nome = "R$:";
+        ceva = Double.parseDouble(valorceva.getText().toString());
+        ml  = Double.parseDouble(valorml.getText().toString());
+        resultado = ceva * 1000;
+        resultado2 = resultado/ml;
 
-        result.setText(String.format("%.2f",resultado2));
+        result.setText(String.format(nome +" %.2f",resultado2));
     }
 }
 
